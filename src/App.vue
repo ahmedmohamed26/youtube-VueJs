@@ -32,7 +32,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 100%;
- 
 	min-height: 100px;
 	width: 100%;
 }
