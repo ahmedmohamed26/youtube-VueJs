@@ -1,0 +1,51 @@
+.channel{
+    padding: 15px 0;
+    .image-cover{
+        width: 100%;
+        height: 200px;
+    }
+    .play-list{
+        list-style-type: none;
+        .list-item{
+            margin-bottom: 10px;
+            a{
+                text-decoration: none;
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    .column {
+                        display: flex;
+                        flex-direction: column;
+                        flex-basis: 100%;
+                       padding: 0 15px;
+                        min-height: 100px;
+                    }
+                    .img-list{  
+                        position: relative;
+                        flex: 1;
+                        .video-count{
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            display: flex;
+                            align-items: center;
+                            font-size: 16px;
+                            background: #000;
+                            color: #fff;
+                            opacity: .9;
+                            width: 150px;
+                            justify-content: center;
+                        }
+                    }
+                    .info-list{
+                        flex: 2;
+                    }
+                  }
+                  
+            }
+        }
+    }
+}

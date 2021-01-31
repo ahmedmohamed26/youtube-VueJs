@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://www.googleapis.com/youtube/v3/';
+export const BASE_URL = 'https://www.googleapis.com/youtube/v3/';
 const headers = {
 	// key : 'AIzaSyDkIZnbwIjRyXs_y3MIbMNYaRcdZ5HFykc',
 	// key:'AIzaSyDuBHX5JBxLBPuTFxtLBvQnOs_Pef86A9I',

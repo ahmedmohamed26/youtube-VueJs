@@ -18,6 +18,6 @@ body{
 }
 .container {
 	display: grid;
-	padding: 0 100px;
+	padding: 0 10%;
 }
 </style>
