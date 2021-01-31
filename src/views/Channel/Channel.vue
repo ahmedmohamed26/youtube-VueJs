@@ -6,17 +6,18 @@
 				class="image-cover"
 				:src="snippet.url"
 				v-bind:alt="cover"
+
 			/>
 			<div class="info-channel">
-				<h1>{{ title }}</h1>
-				<h4>{{ subscriberCount }}</h4>
+				<h1 class="title-channel">{{ title }}</h1>
+				<h4 class="subscriber-count">subscribe <span>{{ subscriberCount }}</span></h4>
 			</div>
 			<!-- info-channel -->
 			<ul class="play-list">
 				<li class="list-item" v-for="list in playLists" :key="list">
 					<router-link to="/">
 						<div class="row">
-							<div class="img-list column ">
+							<div class="img-list column mr">
 								<img
 									:src="list.snippet.thumbnails.medium.url"
 									v-bind:alt="list.snippet.title"
@@ -24,9 +25,10 @@
 								<h6 class="video-count ">{{ list.contentDetails.itemCount }}</h6>
 							</div>
 							<!-- img-list -->
-							<div class="info-list column ">
-								<h4>{{ list.snippet.localized.title }}</h4>
-								<p>{{ list.snippet.localized.description }}</p>
+							<div class="info-list column ml">
+								<h4 class="title-playlist">{{ list.snippet.localized.title }}</h4>
+								<p class="description">{{ list.snippet.localized.description }}</p>
+								<h6 class="view-playlist-count">view full playlist({{ list.contentDetails.itemCount }} videos)</h6>
 							</div>
 							<!-- img-list -->
 						</div>
