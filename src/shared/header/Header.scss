@@ -1,0 +1,57 @@
+@import '../../assets/styles/variables.scss';
+
+header {
+    padding: 15px 0;
+    box-shadow: $shadow;
+    background-color: #fff;
+    .navbar {
+        display: flex;
+        align-items: center;
+
+        .navbar-brand {
+            flex-grow: 1;
+
+            img {
+                width: 100px;
+            }
+        }
+
+        form {
+            flex-grow: 2;
+
+            .form-group {
+                display: flex;
+
+                .form-control {
+                    width: 90%;
+                    border: 1px solid $offWhite;
+                    padding: 10px;
+                    border-top-left-radius: $borderRadius;
+                    border-bottom-left-radius: $borderRadius;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                .search {
+                    padding: 10px;
+                    border: 1px solid $offWhite;
+                    border-left: none;
+                    border-top-right-radius: $borderRadius;
+                    border-bottom-right-radius: $borderRadius;
+                    width: 10%;
+                    color: $lightGray;
+                    font-size: $normalSize;
+                    cursor: pointer;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+            }
+        }
+
+    }
+}
