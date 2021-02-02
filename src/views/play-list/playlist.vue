@@ -58,6 +58,11 @@ export default {
 					throw new Error(error.message);
 				});
 		},
+		scroll = (e) => {
+    if (e.target.scrollTop == e.target.scrollHeight - e.target.offsetHeight) {
+      console.log('You reached the bottom!');
+    }
+  }
 	},
 	mounted() {
 		this.getAllPlaylistItems();

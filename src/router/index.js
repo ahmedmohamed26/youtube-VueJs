@@ -3,7 +3,7 @@ import Home from '../views/home/home.vue';
 import Channel from '../views/channel/channel.vue';
 import PlayList from '../views/play-list/playlist.vue';
 import Video from '../views/video/video.vue';
-
+import NotFound from '../views/not-found/notfound.vue';
 const routes = [
 	{
 		path: '/',
@@ -24,6 +24,11 @@ const routes = [
 		path: '/video/:id',
 		name: 'Video',
 		component: Video,
+	},
+	{
+		path: '/:catchAll(.*)',
+		name: 'NotFound',
+		component: NotFound,
 	},
 	// {
 	// 	path: '/about',

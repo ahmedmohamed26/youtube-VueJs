@@ -1,0 +1,11 @@
+@import '../../assets/styles/variables.scss';
+.not-found{
+    padding: 15px 0;
+    text-align: center;
+    h4{
+        font-size: $bigSizeFont;
+        color: $primaryColor;
+        text-transform: capitalize;
+        font-family: 'poppins-Medium';
+    }
+}
