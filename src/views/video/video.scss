@@ -1,4 +1,5 @@
 @import '../../assets/styles/variables.scss';
+@import '../../assets/styles/mixins.scss';
 
 .video {
     padding: 15px 0;
@@ -52,6 +53,10 @@
                             box-shadow: none;
                         }
                     }
+
+                    &:last-of-type {
+                        margin-right: 0 ;
+                    }
                 }
             }
 
@@ -69,60 +74,23 @@
 
         .channel-info {
             padding: 15px 0;
+
+            .channel-title {
+                color: $primaryColor;
+                font-size: $defaultSize;
+                font-family: 'poppins-Medium';
+                margin-bottom: 5px;
+            }
+
+            .published-video {
+                color: $lightGray;
+                font-size: $smallSize;
+                font-family: 'poppins-regular';
+            }
         }
     }
 
     .related-video {
-        .list-videos {
-            list-style-type: none;
-
-            .list-item {
-                margin-bottom: 15px;
-
-                a {
-                    text-decoration: none;
-
-                    .img-list {
-                        position: relative;
-                        flex: 1;
-                        height: auto;
-                        margin-bottom: 15px;
-
-                        img {
-                            height: 100%;
-                        }
-
-                    }
-
-                    .info-list {
-                        flex: 2;
-
-                        .title-playlist {
-                            color: $primaryColor;
-                            margin-bottom: 5px;
-                            font-family: 'poppins-Medium';
-                            font-size: $largeSize;
-                        }
-
-                        .description {
-                            color: $lightGray;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 5;
-                            -o-line-clamp: 5;
-                            -moz-line-clamp: 5;
-                            -webkit-box-orient: vertical;
-                            font-family: 'poppins-regular';
-                            line-height: 1.4;
-                            margin-bottom: 5px;
-                        }
-
-                    }
-
-
-                }
-            }
-        }
+        @include list
     }
 }

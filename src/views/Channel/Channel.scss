@@ -1,28 +1,31 @@
 @import '../../assets/styles/variables.scss';
 .channel{
     padding: 15px 0;
-    .image-cover{
-        width: 100%;
-        height: 200px;
-    }
-    .info-channel{
-        padding: 15px 0;
-        .title-channel{
-            color: $primaryColor;
-            margin-bottom: 5px;
-            font-family: 'poppins-Medium';
-            font-size: $largeSize;
+    .parent-channel-details{
+        .image-cover{
+            width: 100%;
+            height: 200px;
         }
-        .subscriber-count{
-            color: red;
-            font-family: 'poppins-Medium';
-            text-transform: uppercase;
-            font-size: $normalSize;
-            span{
-            color: $lightGray;
-            margin: 0 10px;
-            font-family: 'poppins-regular';}
+        .info-channel{
+            padding: 15px 0;
+            .title-channel{
+                color: $primaryColor;
+                margin-bottom: 5px;
+                font-family: 'poppins-Medium';
+                font-size: $largeSize;
+            }
+            .subscriber-count{
+                color: red;
+                font-family: 'poppins-Medium';
+                text-transform: uppercase;
+                font-size: $normalSize;
+                span{
+                color: $lightGray;
+                margin: 0 10px;
+                font-family: 'poppins-regular';}
+            }
         }
+      
     }
     .play-list{
         list-style-type: none;

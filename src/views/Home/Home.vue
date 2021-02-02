@@ -36,8 +36,8 @@ export default {
 	
 	},
 	mounted() {
-		this.getAllRelatedVideos();
-		this.getAllChannels();
+		// this.getAllRelatedVideos();
+		// this.getAllChannels();
 	},
 };
 </script>

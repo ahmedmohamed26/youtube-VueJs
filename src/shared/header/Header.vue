@@ -2,9 +2,9 @@
 	<header>
 		<div class="container">
 			<nav class="navbar">
-				<a class="navbar-brand">
+				<router-link to="/" class="navbar-brand">
 					<img src="./../../assets/images/logo.jpg" alt="logo" />
-				</a>
+				</router-link>
 				<form>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search" />

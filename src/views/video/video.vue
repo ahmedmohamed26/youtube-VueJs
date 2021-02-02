@@ -1,54 +1,60 @@
 <template>
 	<section class="video">
 		<div class="container">
-			<div v-for="video in videos" :key="video" class="video-details">
-				<img
-					class="image-cover column"
-					:src="video.snippet.thumbnails.high.url"
-					v-bind:alt="cover"
-				/>
-				<h1 class="video-name">{{ video.snippet.title }}</h1>
-				<div class="statistics">
-					<h6 class="view-count">
-						{{ video.statistics.viewCount }} watching now
-					</h6>
-					<ul class="list-statistics">
-						<li class="item">
-							<button class="item-button">
-								<i class="fa fa-thumbs-up" aria-hidden="true"></i
-								>{{ video.statistics.likeCount }}
-							</button>
-						</li>
-						<li class="item">
-							<button class="item-button">
-								<i class="fa fa-thumbs-down " aria-hidden="true"></i
-								>{{ video.statistics.dislikeCount }}
-							</button>
-						</li>
-						<li class="item">
-							<button class="item-button">
-								<i class="fa fa-share" aria-hidden="true"></i>share
-							</button>
-						</li>
-						<li class="item">
-							<button class="item-button">
-								<i class="fa fa-outdent" aria-hidden="true"></i>
-							</button>
-						</li>
-						<li class="item">
-							<button class="item-button">
-								<i class="fa fa-outdent" aria-hidden="true"></i>
-							</button>
-						</li>
-					</ul>
-				</div>
-				<!-- statistics -->
-				<div class="channel-info">
-					<h5>{{ video.snippet.channelTitle }}</h5>
-					<h6>{{ new Date(video.snippet.publishedAt) }}</h6>
+			<Loading v-if="loadingShow" />
+			<div  v-if="!loadingShow">
+				<div v-for="video in videos" :key="video" class="video-details">
+					<img
+						class="image-cover column"
+						:src="video.snippet.thumbnails.high.url"
+						v-bind:alt="cover"
+					/>
+					<h1 class="video-name">{{ video.snippet.title }}</h1>
+					<div class="statistics">
+						<h6 class="view-count">
+							{{ video.statistics.viewCount }} watching now
+						</h6>
+						<ul class="list-statistics">
+							<li class="item">
+								<button class="item-button" title="i like this">
+									<i class="fa fa-thumbs-up" aria-hidden="true"></i
+									>{{ video.statistics.likeCount }}
+								</button>
+							</li>
+							<li class="item">
+								<button class="item-button" title="i dislike this">
+									<i class="fa fa-thumbs-down " aria-hidden="true"></i
+									>{{ video.statistics.dislikeCount }}
+								</button>
+							</li>
+							<li class="item">
+								<button class="item-button" title="share">
+									<i class="fa fa-share" aria-hidden="true"></i>share
+								</button>
+							</li>
+							<li class="item">
+								<button class="item-button" title="save">
+									<i class="fa fa-outdent" aria-hidden="true"></i>
+								</button>
+							</li>
+							<li class="item">
+								<button class="item-button" title="">
+									<i class="fa fa-ellipsis-h " aria-hidden="true"></i>
+								</button>
+							</li>
+						</ul>
+					</div>
+					<!-- statistics -->
+					<div class="channel-info">
+						<h5 class="channel-title">{{ video.snippet.channelTitle }}</h5>
+						<h6 class="published-video">
+							Published on
+							{{ new Date(video.snippet.publishedAt).toDateString() }}
+						</h6>
+					</div>
 				</div>
 			</div>
-			<div class="related-video">
+			<div class="related-video" v-if="!loadingShow">
 				<ul class="list-videos">
 					<li class="list-item" v-for="video in relatedVideos" :key="video">
 						<router-link v-bind:to="'/video/' + video.id.videoId">
@@ -81,42 +87,55 @@
 
 <script>
 import { getvideo, getRelatedVideo } from '../../axios/services';
-
+import { watch } from 'vue';
+import Loading from '../../components/loading/loading';
 export default {
 	name: 'PlayList',
+	components: {
+		Loading,
+	},
 	data() {
 		return {
 			videos: [],
 			relatedVideos: [],
-			id: this.$route.params.id,
+			id: null,
+			loadingShow:false
 		};
 	},
-	// Ks-_Mh1QhMc,c0KYU2j0TM4,eIho2S0ZahI
+	mounted() {
+		this.getVideoDetails();
+		this.getAllRelatedVideo();
+	},
+	watch: {
+		$route: 'getVideoDetails',
+	},
 	methods: {
 		getVideoDetails() {
+			this.loadingShow = true;
+			this.id = this.$route.params.id;
 			getvideo(this.id)
 				.then(({ data }) => {
 					console.log(data);
 					this.videos = data.items;
+					scrollTo(0, 0);
+					this.loadingShow = false;
 				})
 				.catch((error) => {
 					throw new Error(error.message);
 				});
 		},
 		getAllRelatedVideo() {
+			this.loadingShow = true;
 			getRelatedVideo(this.id)
 				.then(({ data }) => {
 					console.log(data);
 					this.relatedVideos = data.items;
+					this.loadingShow = false;
 				})
 				.catch((error) => {
 					throw new Error(error.message);
 				});
 		},
-	},
-	mounted() {
-		this.getVideoDetails();
-		this.getAllRelatedVideo();
 	},
 };
 </script>

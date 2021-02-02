@@ -1,7 +1,8 @@
 <template>
 	<section class="play-list">
 		<div class="container">
-			<ul class="list-videos">
+			<Loading v-if="loadingShow" />
+			<ul class="list-videos" v-if="!loadingShow">
 				<li class="list-item" v-for="list in playList" :key="list">
 					<router-link v-bind:to="'/video/' + list.contentDetails.videoId">
 						<div class="row">
@@ -31,21 +32,27 @@
 
 <script>
 import { getPlaylistItems } from '../../axios/services';
-
+import Loading from '../../components/loading/loading';
 export default {
 	name: 'PlayList',
+	components: {
+		Loading,
+	},
 	data() {
 		return {
 			playList: [],
 			id: this.$route.params.id,
+			loadingShow: false,
 		};
 	},
 	methods: {
 		getAllPlaylistItems() {
+			this.loadingShow = true;
 			getPlaylistItems(this.id)
-				.then(({data}) => {
-					console.log(data)
+				.then(({ data }) => {
+					console.log(data);
 					this.playList = data.items;
+					this.loadingShow = false;
 				})
 				.catch((error) => {
 					throw new Error(error.message);

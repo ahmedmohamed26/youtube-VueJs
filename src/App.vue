@@ -1,6 +1,6 @@
 <template>
 	<Header />
-	<router-view />
+ 	<router-view />
 </template>
 
 <script>
@@ -18,8 +18,6 @@ body {
 	width: 100%;
 }
 .container {
-	// width: 100%;
-	// display: grid;
 	padding: 0 10%;
 }
 .row {
