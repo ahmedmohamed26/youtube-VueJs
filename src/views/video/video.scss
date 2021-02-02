@@ -91,6 +91,9 @@
     }
 
     .related-video {
-        @include list
+        .list-videos{
+            list-style-type: none;
+            @include list;
+        }
     }
 }

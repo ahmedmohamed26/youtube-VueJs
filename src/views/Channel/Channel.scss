@@ -1,4 +1,5 @@
 @import '../../assets/styles/variables.scss';
+ @import '../../assets/styles/mixins.scss';
 .channel{
     padding: 15px 0;
     .parent-channel-details{
@@ -29,65 +30,6 @@
     }
     .play-list{
         list-style-type: none;
-        .list-item{
-            margin-bottom: 15px;
-            a{
-                text-decoration: none;
-                    .img-list{  
-                        position: relative;
-                        flex: 1;
-                        height: auto;
-                        margin-bottom: 15px;
-                        img{
-                            height: 100%;
-                        }
-                        .video-count{
-                            position: absolute;
-                            right: 0;
-                            top: 0;
-                            bottom: 0;
-                            display: flex;
-                            align-items: center;
-                            font-size: 16px;
-                            background: #000;
-                            color: #fff;
-                            opacity: .8;
-                            width: 40%;
-                            height: auto;
-                            justify-content: center;
-                            font-family: 'poppins-regular';
-                        }
-                    }
-                    .info-list{
-                        flex: 2;
-                        .title-playlist{
-                            color: $primaryColor;
-                            margin-bottom: 5px;
-                            font-family: 'poppins-Medium';
-                            font-size: $largeSize;
-                        }
-                        .description{
-                            color: $lightGray;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 5;
-                            -o-line-clamp: 5;
-                            -moz-line-clamp: 5;
-                            -webkit-box-orient: vertical;
-                            font-family: 'poppins-regular';
-                            line-height: 1.4;
-                            margin-bottom: 5px;
-                        }
-                        .view-playlist-count{
-                            color: $lightGray;
-                            font-family: 'poppins-Medium';
-                            text-transform: uppercase;
-                        }
-                    }
-                  
-                  
-            }
-        }
+        @include list;
     }
 }
