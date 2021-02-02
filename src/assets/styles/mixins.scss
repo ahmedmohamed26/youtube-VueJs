@@ -1,0 +1,46 @@
+@mixin list {
+    .list-videos{
+        list-style-type: none;
+        .list-item{
+            margin-bottom: 15px;
+            a{
+                text-decoration: none;
+                    .img-list{  
+                        position: relative;
+                        flex: 1;
+                        height: auto;
+                        margin-bottom: 15px;
+                        img{
+                            height: 100%;
+                        }
+                       
+                    }
+                    .info-list{
+                        flex: 2;
+                        .title-playlist{
+                            color: $primaryColor;
+                            margin-bottom: 5px;
+                            font-family: 'poppins-Medium';
+                            font-size: $largeSize;
+                        }
+                        .description{
+                            color: $lightGray;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 5;
+                            -o-line-clamp: 5;
+                            -moz-line-clamp: 5;
+                            -webkit-box-orient: vertical;
+                            font-family: 'poppins-regular';
+                            line-height: 1.4;
+                            margin-bottom: 5px;
+                        }
+                 
+                    }
+                  
+                  
+            }
+        }
+    }
+}
