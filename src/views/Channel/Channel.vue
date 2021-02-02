@@ -75,7 +75,6 @@ export default {
 			this.loadingShow = true;
 			getChannels('UC_x5XG1OV2P6uZZ5FSM9Ttw')
 				.then(({ data }) => {
-					console.log(data.items[0]);
 					this.snippet = data.items[0].snippet.thumbnails.medium;
 					this.title = data.items[0].snippet.title;
 					this.subscriberCount = data.items[0].statistics.subscriberCount;
@@ -89,7 +88,6 @@ export default {
 			this.loadingShow = true;
 			getPlaylists('UC_x5XG1OV2P6uZZ5FSM9Ttw')
 				.then(({ data }) => {
-					console.log(data);
 					this.playLists = data.items;
 					this.loadingShow = false;
 				})

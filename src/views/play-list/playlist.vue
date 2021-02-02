@@ -50,7 +50,6 @@ export default {
 			this.loadingShow = true;
 			getPlaylistItems(this.id)
 				.then(({ data }) => {
-					console.log(data);
 					this.playList = data.items;
 					this.loadingShow = false;
 				})

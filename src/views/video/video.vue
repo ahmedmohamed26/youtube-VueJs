@@ -115,7 +115,6 @@ export default {
 			this.id = this.$route.params.id;
 			getvideo(this.id)
 				.then(({ data }) => {
-					console.log(data);
 					this.videos = data.items;
 					scrollTo(0, 0);
 					this.loadingShow = false;
@@ -128,7 +127,6 @@ export default {
 			this.loadingShow = true;
 			getRelatedVideo(this.id)
 				.then(({ data }) => {
-					console.log(data);
 					this.relatedVideos = data.items;
 					this.loadingShow = false;
 				})

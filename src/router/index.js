@@ -1,41 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/home/home.vue';
-import Channel from '../views/channel/channel.vue';
-import PlayList from '../views/play-list/playlist.vue';
-import Video from '../views/video/video.vue';
-import NotFound from '../views/not-found/notfound.vue';
 const routes = [
 	{
-		path: '/',
-		name: 'Home',
-		component: Home,
+		path: '',
+		redirect:'/channel'
 	},
 	{
 		path: '/channel',
 		name: 'Channel',
-		component: Channel,
+		component: () => import('../views/channel/channel.vue'),
 	},
 	{
 		path: '/play-list/:id',
 		name: 'PlayList',
-		component: PlayList,
+		component: () => import('../views/play-list/playlist.vue'),
 	},
 	{
 		path: '/video/:id',
 		name: 'Video',
-		component: Video,
+		component: () => import('../views/video/video.vue'),
 	},
 	{
 		path: '/:catchAll(.*)',
 		name: 'NotFound',
-		component: NotFound,
+		component: () => import('../views/not-found/notfound.vue'),
 	},
-	// {
-	// 	path: '/about',
-	// 	name: 'About',
-	// 	component: () =>
-	// 		import('../views/About.vue'),
-	// },
 ];
 
 const router = createRouter({

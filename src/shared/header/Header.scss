@@ -4,6 +4,10 @@ header {
     padding: 15px 0;
     box-shadow: $shadow;
     background-color: #fff;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 333;
     .navbar {
         display: flex;
         align-items: center;
@@ -53,5 +57,11 @@ header {
             }
         }
 
+    }
+}
+
+@media(max-width:768px){
+    header{
+        position: inherit !important;
     }
 }
