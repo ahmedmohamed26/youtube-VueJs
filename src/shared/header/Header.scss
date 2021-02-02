@@ -8,6 +8,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 333;
+
     .navbar {
         display: flex;
         align-items: center;
@@ -25,6 +26,7 @@ header {
 
             .form-group {
                 display: flex;
+                margin-left: 10px;
 
                 .form-control {
                     width: 90%;
@@ -44,7 +46,6 @@ header {
                     border-left: none;
                     border-top-right-radius: $borderRadius;
                     border-bottom-right-radius: $borderRadius;
-                    width: 10%;
                     color: $lightGray;
                     font-size: $normalSize;
                     cursor: pointer;
@@ -60,8 +61,9 @@ header {
     }
 }
 
-@media(max-width:768px){
-    header{
+@media(max-width:768px) {
+    header {
         position: inherit !important;
+        background-color: red;
     }
 }

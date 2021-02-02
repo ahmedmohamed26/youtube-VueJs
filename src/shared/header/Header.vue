@@ -2,7 +2,7 @@
 	<header>
 		<div class="container">
 			<nav class="navbar">
-				<router-link to="/" class="navbar-brand">
+				<router-link to="/channel" class="navbar-brand">
 					<img src="./../../assets/images/logo.jpg" alt="logo" />
 				</router-link>
 				<form>

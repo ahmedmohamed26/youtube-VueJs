@@ -1,8 +1,7 @@
 <template>
 	<section class="play-list">
 		<div class="container">
-			<Loading v-if="loadingShow" />
-			<ul class="list-videos" v-if="!loadingShow">
+			<ul class="list-videos">
 				<li class="list-item" v-for="list in playList" :key="list">
 					<router-link v-bind:to="'/video/' + list.contentDetails.videoId">
 						<div class="row">
@@ -26,6 +25,7 @@
 					</router-link>
 				</li>
 			</ul>
+			<Loading v-if="loadingShow" />
 		</div>
 	</section>
 </template>
@@ -40,15 +40,21 @@ export default {
 	},
 	data() {
 		return {
-			playList: [],
-			id: this.$route.params.id,
+			playList: null,
+			id: null,
 			loadingShow: false,
+			pageSize: 25,
 		};
+	},
+	mounted() {
+		this.getAllPlaylistItems();
+		this.scroll();
 	},
 	methods: {
 		getAllPlaylistItems() {
 			this.loadingShow = true;
-			getPlaylistItems(this.id)
+			this.id = this.$route.params.id;
+			getPlaylistItems(this.id, this.pageSize)
 				.then(({ data }) => {
 					this.playList = data.items;
 					this.loadingShow = false;
@@ -57,11 +63,19 @@ export default {
 					throw new Error(error.message);
 				});
 		},
-		
+		scroll() {
+			window.onscroll = () => {
+				let bottomOfWindow =
+					document.documentElement.scrollTop + window.innerHeight ===
+					document.documentElement.offsetHeight;
+				if (bottomOfWindow || this.playLists?.length < 50) {
+					this.pageSize = this.pageSize + 25;
+					this.getAllPlaylistItems();
+				}
+			};
+		},
 	},
-	mounted() {
-		this.getAllPlaylistItems();
-	},
+	
 };
 </script>
 <style src="./playlist.scss" lang="scss" scoped></style>
