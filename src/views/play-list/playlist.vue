@@ -7,17 +7,17 @@
 						<div class="row">
 							<div class="img-list column mr">
 								<img
-									:src="list.snippet.thumbnails.medium.url"
+									:src="list?.snippet?.thumbnails?.medium?.url"
 									v-bind:alt="list.snippet.title"
 								/>
 							</div>
 							<!-- img-list -->
 							<div class="info-list column ml">
 								<h4 class="title-playlist">
-									{{ list.snippet.title }}
+									{{ list?.snippet?.title }}
 								</h4>
 								<p class="description">
-									{{ list.snippet.description }}
+									{{ list?.snippet?.description }}
 								</p>
 							</div>
 							<!-- img-list -->

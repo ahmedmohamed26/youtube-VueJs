@@ -1,30 +1,30 @@
 <template>
 	<section class="video">
 		<div class="container">
-			<Loading v-if="loadingShow" />
+			
 			<div  v-if="!loadingShow">
 				<div v-for="video in videos" :key="video" class="video-details">
 					<img
 						class="image-cover column"
-						:src="video.snippet.thumbnails.high.url"
+						:src="video?.snippet?.thumbnails?.high?.url"
 						v-bind:alt="cover"
 					/>
-					<h1 class="video-name">{{ video.snippet.title }}</h1>
+					<h1 class="video-name">{{ video?.snippet?.title }}</h1>
 					<div class="statistics">
 						<h6 class="view-count">
-							{{ video.statistics.viewCount }} watching now
+							{{ video?.statistics?.viewCount }} watching now
 						</h6>
 						<ul class="list-statistics">
 							<li class="item">
 								<button class="item-button" title="i like this">
 									<i class="fa fa-thumbs-up" aria-hidden="true"></i
-									>{{ video.statistics.likeCount }}
+									>{{ video?.statistics?.likeCount }}
 								</button>
 							</li>
 							<li class="item">
 								<button class="item-button" title="i dislike this">
 									<i class="fa fa-thumbs-down " aria-hidden="true"></i
-									>{{ video.statistics.dislikeCount }}
+									>{{ video?.statistics?.dislikeCount }}
 								</button>
 							</li>
 							<li class="item">
@@ -49,7 +49,7 @@
 						<h5 class="channel-title">{{ video.snippet.channelTitle }}</h5>
 						<h6 class="published-video">
 							Published on
-							{{ new Date(video.snippet.publishedAt).toDateString() }}
+							{{ new Date(video?.snippet?.publishedAt).toDateString() }}
 						</h6>
 					</div>
 				</div>
@@ -61,17 +61,17 @@
 							<div class="row">
 								<div class="img-list column mr">
 									<img
-										:src="video.snippet.thumbnails.medium.url"
+										:src="video?.snippet?.thumbnails?.medium?.url"
 										v-bind:alt="video.snippet.title"
 									/>
 								</div>
 								<!-- img-video -->
 								<div class="info-list column ml">
 									<h4 class="title-playlist">
-										{{ video.snippet.title }}
+										{{ video?.snippet?.title }}
 									</h4>
 									<p class="description">
-										{{ video.snippet.description }}
+										{{ video?.snippet?.description }}
 									</p>
 								</div>
 								<!-- img-list -->
@@ -81,6 +81,7 @@
 				</ul>
 			</div>
 			<!-- related-video -->
+			<Loading v-if="loadingShow" />
 		</div>
 	</section>
 </template>
